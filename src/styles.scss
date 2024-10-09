@@ -1,3 +1,6 @@
+
+
+@use "./../public/styles/colores.scss";
 /* You can add global styles to this file, and also import other style files */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -46,4 +49,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+input{
+    background: none;
+    outline: none;
+    border: none;
 }

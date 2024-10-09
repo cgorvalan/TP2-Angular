@@ -1,6 +1,22 @@
-import { Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { EstadosCocherasComponent } from './pages/estados-cocheras/estados-cocheras.component';
+import { EstadoCocherasComponent } from './pages/estados-cocheras/estados-cocheras.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
+import { inject } from '@angular/core';
+import { AuthService } from './services/auth.services';
+
+function guardaLogueado(){
+    let auth = inject(AuthService);
+    let router = inject(Router);
+
+    if (auth.estaLogueado())
+        return true;
+    else{
+        router.navigate(['/login']);
+        return false;
+    }
+        
+}
 
 export const routes: Routes = [
     {
@@ -8,12 +24,17 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: "estados-cocheras",
-        component: EstadosCocherasComponent
+        path: "estado-cocheras",
+        component: EstadoCocherasComponent,
+        canActivate: [guardaLogueado]
     },
     {
-        path:"",
+        path: "reportes",
+        component: ReportesComponent,
+    },
+    {
+        path: "",
         redirectTo: "login",
-        pathMatch: "full"
-    }
+        pathMatch: "full"
+    }
 ];
