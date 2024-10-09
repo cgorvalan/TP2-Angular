@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Login } from '../interfaces/login';
+import { Login } from '../app/interfaces/login';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  login(Login: Login) {
+  login(datosLogin: Login) {
     return fetch('http://localhost:4000/login', {
       method: 'POST',
-      body: JSON.stringify(Login),
+      body: JSON.stringify(datosLogin),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -25,15 +25,7 @@ export class AuthService {
     });
   }
 
-  getToken(): string{
-    return localStorage.getItem('token') ?? "";
-  }
-  estaLogueado(): boolean{
-    if (this.getToken())
-      return true;
-   else
-    return false;
-  
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 }
-

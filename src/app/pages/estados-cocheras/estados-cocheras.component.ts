@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Cochera } from '../../interfaces/cochera';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../../components/header/header.component";
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.services';
 
 @Component({
   selector: 'app-estado-cocheras',
@@ -28,16 +29,17 @@ export class EstadoCocherasComponent {
       this.filas = cocheras;
     });
   }
+  auth=inject(AuthService);
 
   traerCocheras(){
     return fetch('http://localhost:4000/cocheras', {
       method: 'GET',
       headers: {
-        authorization: "Bearer " + localStorage.getItem('token') ?? ""
-      }
+        authorization: "Bearer " + localStorage.getItem('token')
+      },
     }
     )
-    .then(response => response.json())
+    .then(r => r.json())
   }
 
   siguienteNumero: number = 1;
