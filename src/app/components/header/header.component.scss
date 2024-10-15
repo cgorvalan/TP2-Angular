@@ -3,36 +3,34 @@
 h1{
     font-size: 50px;
     font-weight: bold;
-    color: colores.$color-principal;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin-right: 750px;
-    // margin-top: 20px;
-    // margin-bottom: 20px;
-    padding: 20px;
+    padding-right: 20px;
 }
 
-.active{
-    color: colores.$color-principal;
-}
-
-nav{
+nav {
     display: flex;
-    align-content: space-between;
-    justify-content: flex-end;
-    background-color: rgb(58, 58, 58);
+    justify-content: space-between; // o 'space-around' para más separación
     align-items: center;
-
+    padding: 10px 20px; // ajustar padding para mayor separación
 }
 
-nav a{
+nav a {
     margin: 20px;
     font-size: 20px;
-    display: flex;
-
+    text-decoration: none; // elimina subrayado si no lo necesitas
+    color: colores.$color-principal// aplica color directo
 }
 
-header{
-    background-color: rgb(58, 58, 58);
+nav i {
+    font-size: 20px;
+    padding: 10px;
+    color: colores.$color-principal;
+}
+
+header {
     display: flex;
-    align-content: space-between;
+    justify-content: space-between; // distribuye el contenido al inicio y al final
+    align-items: center; // centra los elementos verticalmente
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 20px; // ajusta el padding según sea necesario
+    color: colores.$color-principal
 }

@@ -1,130 +1,119 @@
 @use "./../../../../public/styles/colores.scss";
 
-#container{
-    background-image: url(./../../../../public/img/fondo-login.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // &::after{
-    //     content: '';
-    //     position: relative;
-    //     background-color: rgba(244, 242, 242, 0.4);
-    //     left: 0;
-    //     right: 0;
-    //     height: 100%;
-    // }
+#container {
+  background-color: rgba(173, 216, 230, 0.792); // Fondo general en celeste claro
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  background-image: url(./../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
+  background-size: cover; 
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    width: 250px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 15px;
-    margin: 50px;
-    margin-top: 20px;
-    padding: 50px;
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0%;
+  
 }
 
-form input{
-    display: flex;
-    border-bottom: 2px solid rgb(224, 111, 18);
-    gap: 10px;
-    flex-direction: column;
-    margin: 10px;
-    align-items: center;
-
-    background: transparent;
-    border: 2px solid colores.$color-principal;
-    border-radius: 40px;
-    padding: 20px 45px 20px 20px;
-    width: 100%;
-    height: 20%;
-    box-sizing: border-box;
-}
-
-h1{
-    color: rgb(227, 111, 21);
-    font-size: 65px;
-    text-shadow: rgba(0, 0, 0, 0.7) 2px 2px 4px;
-    font-weight: bold;
-    text-align: center;
-    
-}
-
-a{
-    color: black;
-    background-color: colores.$color-ocupado;
-    padding: 10px;
-    border-radius: 15px;
-    margin: 15px;
-    
-}
-
-.iniciar-sesion{
-    text-decoration: none;
-    color: white;
-    background-color: rgb(227, 111, 21);
-    padding: 10px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    margin-top: 5px;
-}
-
-p{
-    margin-bottom: 30px;
-}
-
-#usuario{
-    display: flex;
-    position: relative;
-    width: 100%;
-    height: 30px;
-    margin: 10px 0;
-}
-
-#usuario i{
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(35%);
-    font-size: 20px;
-    display: flex;
-}
-
-#contraseña{
-    display: flex;
-    position: relative;
-    width: 100%;
-    height: 30px;
-    margin: 30px 0;
-}
-
-#contraseña i{
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(35%);
-    font-size: 20px;
-}
-
-#recuerdame{
-    display: flex;
-    transform: translateX(-50%);
-}
-
-#recuerdame p{
-    transform: translateY(45%);
+#titulo {
+  flex: 1.5; // Permite que el título ocupe el espacio restante
+  display: flex;
+  justify-content: left; 
+  align-items: center; // Centra el título verticalmente
+  background-size: cover;
+  
 }
 
 
+h1 {
+  font-size: 85px;
+  color: colores.$color-texto; // Cambia este color en tu archivo de colores si es necesario
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
+form {
+  flex: 1; // Permite que el formulario ocupe el espacio restante
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8); // Fondo blanco translúcido
+  border-radius: 15px;
+  padding: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+form input {
+  border: 1px solid colores.$color-principal;
+  border-radius: 40px;
+  padding: 15px 20px;
+  width: 100%;
+  margin: 10px 0;
+  background: transparent;
+  outline: none;
+  box-sizing: border-box;
+}
+
+button.iniciar-sesion {
+  background-color: rgb(24, 114, 225);
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 20px 0;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  &:hover {
+    background-color: rgb(34, 144, 255); 
+    transition: background-color 0.3s ease; 
+  }
+}
+
+#usuario, #contraseña {
+  position: relative;
+  width: 100%;
+  margin: 15px 0;
+}
+
+#usuario i, #contraseña i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #999;
+}
+
+#recuerdame {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#recuerdame p {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 
 

@@ -19,7 +19,7 @@ export class LoginComponent {
 
   router = inject(Router);
 
-  /** INICIA SESION */
+  
   Login(){
     console.log("Login");
     fetch("http://localhost:4000/login",{
@@ -31,12 +31,12 @@ export class LoginComponent {
     }).then(res => {
       res.json().then(resJson => {
         if(resJson.status === 'ok'){
-          // login correcto 
+          
           this.router.navigate(['/estado-cocheras']);
           localStorage.setItem('token', resJson.token);
-          // alert(localStorage.getItem('token'));
+         
         } else {
-          // login incorrecto
+          
         }
         console.log("recibi respuesta del back", resJson)
       })

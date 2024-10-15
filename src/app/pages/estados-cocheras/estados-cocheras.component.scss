@@ -1,8 +1,5 @@
 @use "./../../../../public/styles/colores.scss";
 
-h1{
-    color: red;
-}
 
 #tabla{
     display: flex;
@@ -11,18 +8,21 @@ h1{
     margin-top: 0px;
     text-align: center;
     padding-top: 50px;
+    
     #header-tabla{
         font-size: larger;
         font-weight: bold;
         background-color: colores.$color-principal;
         padding-top: 20px;
         padding-bottom: 20px;
+        color:rgb(34, 34, 34);
     }
     >div{
         display: grid;
         grid-template-columns: 100px 1fr 1fr 1fr;
         border-bottom: 1px solid rgb(73, 73, 73);
         align-items: center;
+        background-color: rgba(255, 255, 255, 0.618);
     }
     .disponible p{
         background-color: rgb(114, 222, 114);
@@ -75,17 +75,48 @@ h1{
 
 }
 
-.boton-resaltado{
+.boton-agregarcocheras{
     margin: auto;
     margin-left: 730px;
     background-color: colores.$color-principal;
     padding: 10px;
     border-radius: 20px;
+    display: flex;
+    
 }
 
+.boton-getcocheras{
+    margin: auto;
+    margin-left: 730px;
+    background-color: colores.$color-principal;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+}
+
+
+
+
+
 main{
-    background-image: url(https://www.vaciadoseconomicos.com/wp-content/uploads/2021/07/composicion-realista-interior-garaje_1284-24929.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
     min-height: 650px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     
+}
+
+.acciones-container i {
+    background: none;
+    padding: 8px;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+
+#bloquear{
+    color: rgb(169, 16, 16);
+}
+
+body{
+    background-image: url(./../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
+    background-size: cover;
 }
