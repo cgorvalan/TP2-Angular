@@ -3,4 +3,6 @@ export interface Cochera {
     disponibilidad: boolean, 
     ingreso: string, 
     acciones: string
+    
+
 }

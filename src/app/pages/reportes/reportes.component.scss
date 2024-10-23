@@ -1,0 +1,64 @@
+@use "./../../../../public/styles/colores.scss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    background-image: url(./../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
+    background-size: cover;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#table {
+    width: 70%; /* Ajusta el ancho según sea necesario */
+    margin: 40px auto;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco translúcido */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+#header-tabla {
+    display: grid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: colores.$color-principal;
+    color: colores.$color-texto-principal;
+    text-align: center;
+    padding: 15px;
+    font-size: 25px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.fila {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+#estado-cocheras {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 20px;
+    font-weight: bold;
+    background-color: colores.$color-texto;
+    padding: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 20px auto;
+    color: white;
+}
+
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
+import { HeaderComponent } from "../../../app/components/header/header.component";
 
 @Component({
   selector: 'app-reportes',
@@ -11,3 +11,4 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class ReportesComponent {
 
 }
+

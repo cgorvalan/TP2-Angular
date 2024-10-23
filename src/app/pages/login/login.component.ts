@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../interfaces/login';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -36,6 +37,12 @@ export class LoginComponent {
           localStorage.setItem('token', resJson.token);
          
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'La contraseña/usuario no es correcta/o',
+        
+          });
           
         }
         console.log("recibi respuesta del back", resJson)

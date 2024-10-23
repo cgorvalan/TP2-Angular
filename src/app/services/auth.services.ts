@@ -37,3 +37,4 @@ export class AuthService {
   }
 }
 
+// agregar una funcion de logout

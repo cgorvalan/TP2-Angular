@@ -24,6 +24,9 @@ nav i {
     font-size: 20px;
     padding: 10px;
     color: colores.$color-principal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none; // elimina subrayado si no lo necesitas
+    cursor: pointer;
 }
 
 header {
