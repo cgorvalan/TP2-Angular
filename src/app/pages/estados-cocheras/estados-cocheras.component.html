@@ -1,34 +1,41 @@
-<body>
-<app-header></app-header>
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ <body> 
+ <app-header></app-header>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
-<main>
-    <div id="tabla">
-        <div id="header-tabla">
-            <div>{{ header.nro }}</div>
-            <div>{{ header.disponibilidad }}</div>
-            <div>{{ header.ingreso }}</div>
-            <div>{{ header.acciones}}</div>
-        </div>
-        @for (fila of filas; track $index) 
-        {
-            <div>
-                <div>{{ fila.nro }}</div>
-                <div><p [ngClass]="{disponible: fila.disponibilidad, ocupado: !fila.disponibilidad}">{{ fila.disponibilidad ? 'Disponible' : 'No disponible'}}</p></div>
-                <div>{{ fila.ingreso }}</div>
-                <div class="acciones-container">
-                    <i class='bx bx-block'(click)="cambiarDisponibilidadCocheras($index)" id="bloquear"></i>
-                    <i class='bx bx-no-entry' (click)="showModal($index)"></i>                   
+   
+        
+            <div id="tabla">
+                <div id="header-tabla">
+                    <div>{{ header.nro }}</div>
+                    <div>{{ header.disponibilidad }}</div>
+                    <div>{{ header.ingreso }}</div>
+                    <div>{{ header.acciones }}</div>
                 </div>
+
+                @for (fila of filas; track $index) {
+                    <div>
+                        <div>{{ $index + 1 }}</div>
+                        
+                        <div>
+                            @if (fila.activo) {
+                                <p class="patente" (click)="cerrarModalEstacionamiento(fila.id, fila.activo.patente)">{{ fila.activo.patente }}</p>
+                            } @else if (fila.deshabilitada) {
+                                <div><span class="ocupado">No disponible</span></div>
+                            } @else {
+                                <div  (click)="abrirModalNuevoEstacionamiento(fila.id)"><span class="disponible">Disponible</span></div>
+                            }
+             </div>
+                        <div>{{ fila.activo?.horaIngreso }}</div>
+                        <div class="acciones-container">
+                            <i class='bx bx-block' (click)="cambiarDisponibilidadCocheras(fila.id)" id="bloquear"></i>
+                            <i class='bx bx-no-entry' (click)="showModal(fila.id)" id="borrar"></i>
+                        </div>
+                    </div>
+
+                   
+                }   
+                
             </div>
-        }
-    </div>
-
-    <div class="botones-cocheras">
-        <button (click)="agregarFila()" class="boton-agregarcocheras">Agregar fila</button>
-        <button (click)="getCocheras()" class="boton-getcocheras">Get Cocheras</button>
-    </div>
-</main>
-
-</body>
+            
+            <button (click)="agregarFila()" class="boton-resaltado" >Agregar Cochera</button>
+    </body>

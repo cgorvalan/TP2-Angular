@@ -4,10 +4,9 @@
     <nav>
         <a [routerLink]="['/estado-cocheras']" routerLinkActive="active" >Estado cochera</a>
         @if(esAdmin){
-            <a [routerLink]="['/reportes']" routerLinkActive="active">Reportes</a>
-            <a [routerLink]="['/precios']" routerLinkActive="active">Precios</a>
-            <i class='bx bxs-user'[routerLink]="['/login']"></i>
+            <a [routerLink]="['/reportes']" routerLinkActive="active">Reportes</a>  
         }
+        <i class='bx bxs-user' (click)="logout()"></i>
         
     </nav>
 </header>

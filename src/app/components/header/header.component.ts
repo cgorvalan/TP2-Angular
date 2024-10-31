@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.services';
 
 @Component({
   selector: 'app-header',
@@ -10,4 +11,14 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   esAdmin: boolean = true;
+
+  auth = inject(AuthService);
+  router = inject(Router);
+
+  logout() {// llama al auth service para hacer logout
+    this.auth.logout();
+    this.router.navigate(['/login']);  // redirige a la página de login
+}
+
+
 }

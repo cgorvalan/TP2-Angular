@@ -1,6 +1,7 @@
 @use "./../../../../public/styles/colores.scss";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 
+
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 400;
@@ -12,53 +13,59 @@ body {
     padding: 0;
     
 }
-
-#table {
-    width: 70%; /* Ajusta el ancho según sea necesario */
-    margin: 40px auto;
-    font-size: 20px;
+#tabla {
+    display: flex;
+    flex-direction: column;
+    margin: 120px;
+    margin-top: 0px;
+    margin-bottom: 0;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco translúcido */
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-}
-
-#header-tabla {
-    display: grid;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    grid-template-columns: repeat(4, 1fr);
-    background-color: colores.$color-principal;
-    color: colores.$color-texto-principal;
-    text-align: center;
-    padding: 15px;
-    font-size: 25px;
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-.fila {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 15px;
-    align-items: center;
-    text-align: center;
+    padding-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none; // elimina subrayado si no lo necesitas
+
+    #header-tabla, > div {
+        display: grid;
+        grid-template-columns: 100px 1fr 1fr 1fr; 
+        align-items: center;
+        text-align: center;
+    }
+
+    #header-tabla {
+        font-size: larger;
+        font-weight: bold;
+        background-color: colores.$color-principal;
+        padding: 20px 0;
+        color: rgb(255, 252, 252);
+    }
+
+    > div {
+        border-bottom: 1px solid rgb(73, 73, 73);
+        background-color: rgba(255, 255, 255, 0.618);
+        padding: 10px;
+    }
+
+    .disponible p, .no-disponiblep, .ocupado p {
+        width: fit-content;
+        margin: 10px auto;
+        border-radius: 3px;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .disponible {
+        background-color: colores.$color-correcto;
+        padding: 10px;
+        border-radius: 10px;
+        width: 100px;
+        margin: auto;
+    }
+
+    .ocupado {
+        background-color: colores.$color-ocupado;
+        padding: 10px;
+        border-radius: 10px;
+        width: 100px;
+        margin: auto;
+    }
 }
-
-
-#estado-cocheras {
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 20px;
-    font-weight: bold;
-    background-color: colores.$color-texto;
-    padding: 10px;
-    border-radius: 5px;
-    width: fit-content;
-    margin: 20px auto;
-    color: white;
-}
-
-

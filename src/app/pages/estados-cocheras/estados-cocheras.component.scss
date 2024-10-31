@@ -1,123 +1,118 @@
 @use "./../../../../public/styles/colores.scss";
 
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    background-image: url(./../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
+    background-size: cover;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+}
 
-#tabla{
+#tabla {
     display: flex;
     flex-direction: column;
     margin: 120px;
     margin-top: 0px;
+    margin-bottom: 0;
     text-align: center;
-    padding-top: 50px;
-    
-    #header-tabla{
+    padding-top: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none; // elimina subrayado si no lo necesitas
+
+    #header-tabla, > div {
+        display: grid;
+        grid-template-columns: 100px 1fr 1fr 1fr; 
+        align-items: center;
+        text-align: center;
+    }
+
+    #header-tabla {
         font-size: larger;
         font-weight: bold;
         background-color: colores.$color-principal;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        color:rgb(34, 34, 34);
+        padding: 20px 0;
+        color: rgb(255, 252, 252);
     }
-    >div{
-        display: grid;
-        grid-template-columns: 100px 1fr 1fr 1fr;
+
+    > div {
         border-bottom: 1px solid rgb(73, 73, 73);
-        align-items: center;
         background-color: rgba(255, 255, 255, 0.618);
+        padding: 10px;
     }
-    .disponible p{
-        background-color: rgb(114, 222, 114);
+
+    .disponible p, .no-disponiblep, .ocupado p {
         width: fit-content;
         margin: 10px auto;
         border-radius: 3px;
-        // height: 20px;
-        text-align: center;
-        padding: 10px 20px;
-    }
-    .deshabilitado p{
-        background-color: rgb(200, 200, 200);
-        width: fit-content;
-        margin: 10px auto;
-        border-radius: 3px;
-        // height: 20px;
-        text-align: center;
-        padding: 10px 20px;
-    }
-    .ocupado p{
-        width: fit-content;
-        margin: 10px auto;
-        border-radius: 3px;
-        // height: 20px;
         text-align: center;
         padding: 10px 20px;
     }
 
-    .disponible{
+    .disponible {
         background-color: colores.$color-correcto;
         padding: 10px;
         border-radius: 10px;
         width: 100px;
         margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        
     }
 
-    .ocupado{
+    .ocupado {
         background-color: colores.$color-ocupado;
         padding: 10px;
         border-radius: 10px;
         width: 100px;
         margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
     }
-
-
 }
 
-.boton-agregarcocheras{
-    margin: auto;
-    margin-left: 730px;
-    background-color: colores.$color-principal;
-    padding: 10px;
-    border-radius: 20px;
+.acciones-container {
     display: flex;
-    
-}
-
-.boton-getcocheras{
-    margin: auto;
-    margin-left: 730px;
-    background-color: colores.$color-principal;
-    padding: 10px;
-    border-radius: 20px;
-    display: flex;
-}
-
-
-
-
-
-main{
-    min-height: 650px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-     
-}
-
-.acciones-container i {
-    background: none;
-    padding: 8px;
+    justify-content: center;
     font-size: 25px;
     cursor: pointer;
-    
 }
 
-#bloquear{
-    color: rgb(169, 16, 16);
-}
+button{
+    color: white;
+    background-color: colores.$color-principal;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: light;
+    font-size: medium;
+    cursor: pointer;
+     
+    }
 
-body{
-    background-image: url(./../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
-    background-size: cover;
+    button:hover {
+        background-color: #1569c2; /* Color de fondo al pasar el cursor */
+        transform: scale(1.05); /* Agranda el botón ligeramente */
+    }
     
-}
+    button:focus {
+        outline: none; /* Remueve el borde de enfoque */
+    }
+    
+    button:active {
+        transform: scale(0.95); /* Efecto de presión al hacer clic */
+    }
+
+    #bloquear:hover {
+        color: rgb(13, 0, 255); /* Cambia 'red' por el color que prefieras */
+    }
+    
+    #borrar:hover {
+        color: rgb(255, 17, 0); /* Cambia 'blue' por el color que prefieras */
+    }

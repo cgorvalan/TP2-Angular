@@ -1,40 +1,52 @@
 import { Injectable } from '@angular/core';
 import { Login } from '../interfaces/login';
+import { Cochera } from '../interfaces/cochera';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
 
-  login(Login: Login) {
-    return fetch('http://localhost:4000/login', {
-      method: 'POST',
-      body: JSON.stringify(Login),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(r => r.json())
-    .then(response => {
-      if (response.status === 'ok') {
-        localStorage.setItem('token', response.token);
-        return true;
-      } else {
-        return false;
-      }
-    });
+  getToken(): string {
+    return localStorage.getItem('token') ?? '';
   }
 
-  getToken(): string{
-    return localStorage.getItem('token') ?? "";
-  }
-  estaLogueado(): boolean{
+  estaLogueado(): boolean {
     if (this.getToken())
       return true;
-   else
+    else
     return false;
+  }
+
+  auth = (AuthService);
+
   
+  static getToken() {
+    throw new Error('Method not implemented.');
+  }
+
+  logout(): void { //funcion de logout
+    localStorage.removeItem("token"); 
+  }
+
+  Login(datosLogin: Login){
+    return fetch("http://localhost:4000/login",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(datosLogin)
+    })
+    .then(res => {
+      return res.json().then(resJson => {
+        if(resJson.status === 'ok'){
+          // login correcto 
+          localStorage.setItem('token', resJson.token);
+        return true;}
+        else{
+          return false;
+        }
+  })
+})
   }
 }
-
-// agregar una funcion de logout
