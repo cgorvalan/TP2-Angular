@@ -169,8 +169,8 @@ export class EstadoCocherasComponent {
         if (res.isConfirmed) {
           this.estacionamientos.cerrarEstacionamiento(patente, idCochera)
             .then((r) => {
-              if (!r.ok) throw new Error("Error en la respuesta del servidor"); // Maneja respuestas no OK
-              return r.json(); // Convertimos a JSON
+              if (!r.ok) throw new Error("Error en la respuesta del servidor"); 
+              return r.json(); 
             })
             .then((rJson) => {
               const costo = rJson.costo;
