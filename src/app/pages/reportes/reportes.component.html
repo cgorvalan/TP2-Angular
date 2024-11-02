@@ -1,6 +1,7 @@
-<body>
-<app-header></app-header>
-
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <app-header></app-header>
+    
+<main>
 
 <div id="tabla">
     <div id="header-tabla">
@@ -11,12 +12,14 @@
     </div>
     @for (reporte of reportes; track $index) {
         <div>
-             <div>{{ reporte.mes }}</div>
-             <div>{{ reporte.usos }}</div>
-             <div>{{ reporte.cobrados }}</div>
+            <div>{{ $index + 1 }}</div>
+            <div>{{ reporte.mes }}</div>
+            <div>{{ reporte.usos }}</div>
+            <div>{{ reporte.cobrados }}</div>
         </div>
-}
-
+    } 
 </div>
+
+</main>
 
     

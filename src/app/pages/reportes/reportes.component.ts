@@ -3,7 +3,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { EstacionamientosService } from '../../services/estacionamiento.service';
 import { CocherasService } from '../../services/cocheras.service';
 import { Reportes } from '../../interfaces/reportes';
-import { Estacionamiento } from '../../interfaces/estacionamiento';
+
 
 @Component({
   selector: 'app-reportes',
@@ -27,8 +27,6 @@ export class ReportesComponent implements OnInit {
   cochera = inject(CocherasService);
   estacionamientos = inject(EstacionamientosService);
   ngOnInit(){
-    // this.traerEstacionamientos();
-    // this.traerCocherasById(4);
     this.traerEstacionamientos().then(res => {
       this.reportes = res;
       console.log(res)
@@ -43,8 +41,6 @@ export class ReportesComponent implements OnInit {
   };
 
   
-
- //<Estacionamiento[]>//
  traerEstacionamientos(){
   return this.estacionamientos.estacionamientos().then(estacionamientos => {
    let reportes: Reportes[] = []
@@ -75,4 +71,4 @@ export class ReportesComponent implements OnInit {
 function callback(reportes: Reportes[]) {
 throw new Error('Function not implemented.');
 }
-// CODIGO EXPLICADO POR PAULI BRUNO, DENLE PUNTOS EXTRA
+// CODIGO EXPLICADO POR PAULI BRUNO, DENLE PUNTOS EXTRA ;)

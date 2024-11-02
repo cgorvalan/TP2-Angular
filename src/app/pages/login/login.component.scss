@@ -21,10 +21,10 @@ main {
 }
 
 #titulo {
-  flex: 1.5; // Permite que el título ocupe el espacio restante
+  flex: 1.5; 
   display: flex;
   justify-content: left; 
-  align-items: center; // Centra el título verticalmente
+  align-items: center; 
   background-size: cover;
   
 }
@@ -32,18 +32,18 @@ main {
 
 h1 {
   font-size: 85px;
-  color: colores.$color-texto; // Cambia este color en tu archivo de colores si es necesario
+  color: colores.$color-texto; 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 form {
-  flex: 1; // Permite que el formulario ocupe el espacio restante
+  flex: 1;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   width: 300px;
-  background-color: rgba(255, 255, 255, 0.8); // Fondo blanco translúcido
+  background-color: rgba(255, 255, 255, 0.8); 
   border-radius: 15px;
   padding: 50px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

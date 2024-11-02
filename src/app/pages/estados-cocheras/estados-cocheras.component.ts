@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.services';
 import { CocherasService } from '../../services/cocheras.service';
 import { EstacionamientosService } from '../../services/estacionamiento.service';
+import { Estacionamiento } from '../../interfaces/estacionamiento';
 
 
 
@@ -21,38 +22,38 @@ export class EstadoCocherasComponent {
 
   titulo: string = "Estado de la cochera";
   header: { nro: string, disponibilidad: string, ingreso: string, acciones: string } = {
-  nro: "Nro", 
-  disponibilidad: "Disponibilidad",
-  ingreso: 'Ingreso',
-  acciones: 'Acciones',
+    nro: "N°",
+    disponibilidad: "Disponibilidad",
+    ingreso: 'Ingreso',
+    acciones: 'Acciones',
   };
-  
   filas: Cochera[] = [];
-  estacionamientos: any;
-  cocheras: Cochera[] = []; 
-  currentCocheraIndex: number = 0; 
 
-  auth=inject(AuthService);
-  cocherasService = inject(CocherasService);
-  estacionamientosService = inject(EstacionamientosService);
   
   ngOnInit() {
-    this.traerCocheras().then(cocheras => {
-      this.filas = cocheras;
+    this.traerCocheras();
+  }
+
+  auth = inject(AuthService);
+  cocheras = inject(CocherasService);
+  estacionamientos = inject(EstacionamientosService);
+
+
+  traerCocheras() {
+    this.cocheras.cocheras().then(cocheras => {
+      this.filas = [];
+
+      for (let cochera of cocheras) {
+        this.estacionamientos.buscarEstacionamientoActivo(cochera.id).then(estacionamiento => {
+          this.filas.push({
+            ...cochera,
+            activo: estacionamiento,
+          });
+        })
+      }
     });
   }
- 
 
-  traerCocheras(){
-    return fetch('http://localhost:4000/cocheras', {
-      method: 'GET',
-      headers: {
-        authorization: "Bearer " + localStorage.getItem('token')
-      },
-    }
-    )
-    .then(r => r.json())
-  }
 
   siguienteNumero: number = 1;
   datosEstadoCocheras = {
@@ -97,14 +98,18 @@ export class EstadoCocherasComponent {
   }
 
 
-  cambiarDisponibilidadCocheras(cocheraId: number) {
-    const cochera = this.filas.find(cochera => cochera.id === cocheraId)!;
+  cambiarDisponibilidadCocheras(cocheraId: number, event:Event) {
+    event.stopPropagation();
+    const cochera = this.filas.find(cochera => cochera.id === cocheraId);
+    if(!cochera) return;
     if (cochera.deshabilitada) {
-      this.cocherasService.habilitar(cochera).then(() => this.traerCocheras());
+      this.cocheras.habilitar(cochera).then(() => this.traerCocheras());
     } else {
-      this.cocherasService.deshabilitar(cochera).then(() => this.traerCocheras());
+      this.cocheras.deshabilitar(cochera).then(() => this.traerCocheras());
     };
-  };
+  }
+
+  ;
   
     
   showModal(indice: number){
@@ -152,39 +157,39 @@ export class EstadoCocherasComponent {
     }
   
 
-cerrarModalEstacionamiento(idCochera: number, patente: string) {
-  Swal.fire({
-    title: '¿Deseas cerrar el estacionamiento?',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Cerrar'
-  }).then((res) => {
-    if (res.isConfirmed) {
-      this.estacionamientos.cerrarEstacionamiento(patente, idCochera)
-        .then((r: { ok: any; json: () => any; }) => {
-          if (!r.ok) throw new Error("Error en la respuesta del servidor"); // Maneja respuestas no OK
-          return r.json(); // Convertimos a JSON
-        })
-        .then((rJson: { costo: any; }) => {
-          const costo = rJson.costo;
-          this.traerCocheras();
+    cerrarModalEstacionamiento(idCochera: number, patente: string) {
+      Swal.fire({
+        title: '¿Deseas cerrar el estacionamiento?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Cerrar'
+      }).then((res) => {
+        if (res.isConfirmed) {
+          this.estacionamientos.cerrarEstacionamiento(patente, idCochera)
+            .then((r) => {
+              if (!r.ok) throw new Error("Error en la respuesta del servidor"); // Maneja respuestas no OK
+              return r.json(); // Convertimos a JSON
+            })
+            .then((rJson) => {
+              const costo = rJson.costo;
+              this.traerCocheras();
+              Swal.fire({
+                title: 'La cochera ha sido cerrada',
+                text: `El precio a cobrar es ${costo}`,
+                icon: 'info'
+              });
+            });
+        } else if (res.dismiss) {
           Swal.fire({
-            title: 'La cochera ha sido cerrada',
-            text: `El precio a cobrar es ${costo}`,
+            title: 'Cancelado',
+            text: 'La cochera no ha sido cerrada.',
             icon: 'info'
           });
-        });
-    } else if (res.dismiss) {
-      Swal.fire({
-        title: 'Cancelado',
-        text: 'La cochera no ha sido cerrada.',
-        icon: 'info'
+        }
       });
-}
-});
-}
+    }
 
   getCocheras() {
     fetch("http://localhost:4000/cocheras", {

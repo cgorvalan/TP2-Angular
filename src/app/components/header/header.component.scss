@@ -1,5 +1,7 @@
 @use "./../../../../public/styles/colores.scss";
 
+
+
 h1{
     font-size: 50px;
     font-weight: bold;
@@ -8,16 +10,16 @@ h1{
 
 nav {
     display: flex;
-    justify-content: space-between; // o 'space-around' para más separación
+    justify-content: space-between; 
     align-items: center;
-    padding: 10px 20px; // ajustar padding para mayor separación
+    padding: 10px 20px; 
 }
 
 nav a {
     margin: 20px;
     font-size: 20px;
-    text-decoration: none; // elimina subrayado si no lo necesitas
-    color: colores.$color-principal// aplica color directo
+    text-decoration: none; 
+    color: colores.$color-principal
 }
 
 nav i {
@@ -25,15 +27,17 @@ nav i {
     padding: 10px;
     color: colores.$color-principal;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: none; // elimina subrayado si no lo necesitas
+    text-decoration: none; 
     cursor: pointer;
 }
 
 header {
     display: flex;
-    justify-content: space-between; // distribuye el contenido al inicio y al final
-    align-items: center; // centra los elementos verticalmente
+    justify-content: space-between; 
+    align-items: center; 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 10px 20px; // ajusta el padding según sea necesario
-    color: colores.$color-principal    
+    padding: 10px 20px; 
+    color: colores.$color-principal; 
+    background-image: url(../../../../public/imagenes/pexels-brett-sayles-1756957.jpg);
+    background-size: cover;
 }

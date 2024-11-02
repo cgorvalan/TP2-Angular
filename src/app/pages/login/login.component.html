@@ -6,7 +6,7 @@
             <h1>PARKING APP</h1> 
         </div>
         
-        <form>
+        <form (ngSubmit)="Login()">
             <div id="usuario">
                 <input type="text" [(ngModel)]="datosLogin.username" name="usuario" placeholder="Usuario">
                 <i class='bx bxs-user'></i>
@@ -21,7 +21,7 @@
                 <p>Recuerdame</p>
             </div>
            
-            <button type="button" class="iniciar-sesion" (click)="Login()">Iniciar sesión</button>
+            <button type="submit" class="iniciar-sesion">Iniciar sesión</button>
         </form>
     
     </main>

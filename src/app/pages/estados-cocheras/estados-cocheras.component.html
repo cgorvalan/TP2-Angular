@@ -1,9 +1,9 @@
- <body> 
+
  <app-header></app-header>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
    
-        
+        <main>
             <div id="tabla">
                 <div id="header-tabla">
                     <div>{{ header.nro }}</div>
@@ -27,7 +27,7 @@
              </div>
                         <div>{{ fila.activo?.horaIngreso }}</div>
                         <div class="acciones-container">
-                            <i class='bx bx-block' (click)="cambiarDisponibilidadCocheras(fila.id)" id="bloquear"></i>
+                            <i class='bx bx-block' (click)="cambiarDisponibilidadCocheras(fila.id, $event)" id="bloquear"></i>
                             <i class='bx bx-no-entry' (click)="showModal(fila.id)" id="borrar"></i>
                         </div>
                     </div>
@@ -36,6 +36,7 @@
                 }   
                 
             </div>
-            
-            <button (click)="agregarFila()" class="boton-resaltado" >Agregar Cochera</button>
-    </body>
+            <div class="boton-agregar">          
+                <button (click)="agregarFila()" class="boton-resaltado" >Agregar Cochera</button>
+            </div>  
+        </main>

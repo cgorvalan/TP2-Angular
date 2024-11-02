@@ -15,9 +15,9 @@ export class HeaderComponent {
   auth = inject(AuthService);
   router = inject(Router);
 
-  logout() {// llama al auth service para hacer logout
+  logout() {
     this.auth.logout();
-    this.router.navigate(['/login']);  // redirige a la página de login
+    this.router.navigate(['/login']);  
 }
 
 

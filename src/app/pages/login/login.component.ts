@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../interfaces/login';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../services/auth.services';
 
 @Component({
   selector: 'app-login',
@@ -19,34 +20,21 @@ export class LoginComponent {
   }
 
   router = inject(Router);
+  auth = inject(AuthService);
 
   
   Login(){
-    console.log("Login");
-    fetch("http://localhost:4000/login",{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.datosLogin),
-    }).then(res => {
-      res.json().then(resJson => {
-        if(resJson.status === 'ok'){
-          
-          this.router.navigate(['/estado-cocheras']);
-          localStorage.setItem('token', resJson.token);
-         
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'La contraseña/usuario no es correcta/o',
-        
-          });
-          
-        }
-        console.log("recibi respuesta del back", resJson)
-      })
-    })
+    this.auth.login(this.datosLogin)
+    .then(ok => {
+      if(ok) {
+        this.router.navigate(['/estado-cocheras']);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Usuario o contraseña incorrecta",
+        });
+      }
+    });
   }
 }
